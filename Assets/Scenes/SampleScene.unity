@@ -313,7 +313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screen: {fileID: 1673609268}
-  ProjectionScreen: {fileID: 1673609269}
 --- !u!1 &1673609264
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +325,6 @@ GameObject:
   - component: {fileID: 1673609267}
   - component: {fileID: 1673609266}
   - component: {fileID: 1673609265}
-  - component: {fileID: 1673609269}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -411,25 +409,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 10}
---- !u!114 &1673609269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673609264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcc129b3443760640a03ce19a4dad77b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Size: {x: 1, y: 1}
-  AspectRatio: {x: 16, y: 9}
-  LockAspectRatio: 1
-  DrawGizmo: 1
-  ShowAlignmentCube: 0
-  AlignmentDepth: 5
-  AlignmentMaterial: {fileID: 0}
 --- !u!1 &1896057355
 GameObject:
   m_ObjectHideFlags: 0
