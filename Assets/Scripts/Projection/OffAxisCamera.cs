@@ -18,7 +18,7 @@ public class OffAxisCamera : MonoBehaviour
     private void LateUpdate()
     {
         camera.worldToCameraMatrix = ViewMatrixManual();
-        camera.projectionMatrix = ProjectionMatrix(camera.worldToCameraMatrix, 0.5f, 15.0f);
+        camera.projectionMatrix = ProjectionMatrix(camera.worldToCameraMatrix, 0.05f, 2.0f);
 #if UNITY_EDITOR
         CameraUtils.DrawFrustum(camera, Color.red);
 #endif
