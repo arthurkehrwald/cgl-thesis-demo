@@ -38,6 +38,9 @@ public class TrackingReceiver : MonoBehaviour
     private float timeOfLastReceivedPacket = -999999f;
     private Thread receiveThread;
     private UdpClient udpClient;
+    private int previousFrameReceivedPacketCount;
+    private int receivedPacketCount = 0;
+    private float approxAgeOfLastReceivedPacket;
 
     private void OnEnable()
     {
@@ -56,8 +59,11 @@ public class TrackingReceiver : MonoBehaviour
 
     private void Update()
     {
-        float ageOfLastReceivedPacket = Time.time - timeOfLastReceivedPacket;
-        IsTrackedPosUpToDate = ageOfLastReceivedPacket < timeoutAfterSeconds;            
+        if (receivedPacketCount != previousFrameReceivedPacketCount)       
+            timeOfLastReceivedPacket = Time.time;        
+        approxAgeOfLastReceivedPacket = Time.time - timeOfLastReceivedPacket;
+        IsTrackedPosUpToDate = approxAgeOfLastReceivedPacket < timeoutAfterSeconds;
+        previousFrameReceivedPacketCount = receivedPacketCount;
     }
 
     private void ReceiveData()
@@ -82,12 +88,12 @@ public class TrackingReceiver : MonoBehaviour
                     (float)receivedCoords[0],
                     (float)receivedCoords[1],
                     (float)receivedCoords[2]) * scalingFactor;
-
-                timeOfLastReceivedPacket = Time.time;
+                
+                receivedPacketCount++;
             }
             catch (Exception e)
             {
-                Debug.LogError(e.Message);
+                Debug.LogError($"Failed to receive tracking data: {e.Message}");
             }
         }
     }
